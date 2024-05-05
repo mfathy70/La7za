@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/screens/products/products_screen.dart';
-
+import 'package:shop_app/screens/category/category_screen.dart';
 import 'section_title.dart';
 
 class SpecialOffers extends StatefulWidget {
@@ -33,9 +32,9 @@ class _SpecialOffersState extends State<SpecialOffers> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) {
-                      return const ProductsScreen(
-                        screenTitle: "Popular Products",
-                        byCat: "661141e8292a3151fe751540",
+                      return const CategoryScreen(
+                        screenTitle: "Electronics",
+                        catId: '662f964e727ec88eb68982d0',
                       );
                     }),
                   );
@@ -46,7 +45,15 @@ class _SpecialOffersState extends State<SpecialOffers> {
                 category: "Fashion",
                 numOfBrands: 24,
                 press: () {
-                  Navigator.pushNamed(context, ProductsScreen.routeName);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      return const CategoryScreen(
+                        screenTitle: "Fashion",
+                        catId: '662e2b95abdc45e2468088db',
+                      );
+                    }),
+                  );
                 },
               ),
               const SizedBox(width: 20),

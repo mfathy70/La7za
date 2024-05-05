@@ -19,11 +19,13 @@ class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
-      {"icon": "assets/icons/Flash Icon.svg", "text": "Flash Deal"},
-      {"icon": "assets/icons/Bill Icon.svg", "text": "Bill"},
-      {"icon": "assets/icons/Game Icon.svg", "text": "Game"},
-      {"icon": "assets/icons/Gift Icon.svg", "text": "Daily Gift"},
-      {"icon": "assets/icons/Discover.svg", "text": "More"},
+      {"icon": "assets/svg/man.svg", "text": "Men"},
+      {"icon": "assets/svg/woman.svg", "text": "Women"},
+      {"icon": "assets/svg/child.svg", "text": "Kids"},
+      {"icon": "assets/svg/electronics.svg", "text": "Electronics"},
+      {"icon": "assets/svg/tv.svg", "text": "TV"},
+      {"icon": "assets/svg/mobile.svg", "text": "Phones"},
+      {"icon": "assets/svg/fashion.svg", "text": "Fashion"},
     ];
     return Column(
       children: [
@@ -71,7 +73,7 @@ class _CategoriesState extends State<Categories> {
                     (index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: CategoryCard(
-                        icon: 'assets/icons/Discover.svg',
+                        icon: categories[index]["icon"],
                         text: snapshot.data![index].name!,
                         press: () {
                           Navigator.push(
