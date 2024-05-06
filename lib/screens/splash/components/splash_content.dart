@@ -21,16 +21,19 @@ class _SplashContentState extends State<SplashContent> {
       children: <Widget>[
         const Spacer(),
         const Text(
-          "TOKOTO",
+          "La7za",
           style: TextStyle(
             fontSize: 32,
             color: kPrimaryColor,
             fontWeight: FontWeight.bold,
           ),
         ),
-        Text(
-          widget.text!,
-          textAlign: TextAlign.center,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: Text(
+            widget.text!,
+            textAlign: TextAlign.center,
+          ),
         ),
         const Spacer(flex: 2),
         Image.asset(

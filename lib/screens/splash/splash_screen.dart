@@ -44,16 +44,16 @@ class _SplashScreenState extends State<SplashScreen> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to Tokoto, Let's shop!",
+      "text": "Welcome to La7za, Let's shop!",
       "image": "assets/images/splash_1.png"
     },
     {
       "text":
-          "We help people conect with store \naround United State of America",
+          "Discover a personalized shopping experience like never before with our AI-powered ecommerce app!",
       "image": "assets/images/splash_2.png"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "text": "Experience the joy of effortless shopping with AI that understands you better with every click.",
       "image": "assets/images/splash_3.png"
     },
   ];
