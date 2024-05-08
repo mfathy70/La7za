@@ -7,16 +7,20 @@ class RoundedIconBtn extends StatelessWidget {
     Key? key,
     required this.icon,
     this.showShadow = false,
+    required this.height,
+    required this.width,
   }) : super(key: key);
 
   final IconData icon;
   final bool showShadow;
+  final double height;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 40,
+      height: height,
+      width: width,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: Colors.white,

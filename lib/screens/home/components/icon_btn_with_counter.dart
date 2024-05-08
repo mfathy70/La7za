@@ -43,7 +43,10 @@ class IconBtnWithCounter extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: const Color(0xFFFF4848),
                   shape: BoxShape.circle,
-                  border: Border.all(width: 1.5, color: Colors.white),
+                  border: Border.all(
+                      width: 2,
+                      color: Colors.white,
+                      strokeAlign: BorderSide.strokeAlignCenter),
                 ),
                 child: Center(
                   child: Text(

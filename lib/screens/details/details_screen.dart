@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shop_app/components/price_container.dart';
 import 'package:shop_app/core/models/product.dart';
-import 'package:shop_app/screens/cart/cart_screen.dart';
+import 'package:shop_app/core/provider/cart_provider.dart';
 import 'components/product_description.dart';
 import 'components/product_images.dart';
 import 'components/top_rounded_container.dart';
@@ -17,6 +17,22 @@ class DetailsScreen extends StatefulWidget {
 }
 
 class _DetailsScreenState extends State<DetailsScreen> {
+  CartProvider cartProvider = CartProvider();
+  int quantity = 1;
+
+  void _incrementQuantity() {
+    setState(() {
+      quantity++;
+      print(quantity);
+    });
+  }
+
+  void _decrementQuantity() {
+    setState(() {
+      quantity != 1 ? quantity-- : null;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final ProductDetailsArguments agrs =
@@ -97,6 +113,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                     children: [
                       PriceContainer(
                         price: product.price!,
+                        quantity: quantity,
+                        add: _incrementQuantity,
+                        remove: _decrementQuantity,
                       ),
                     ],
                   ),
@@ -113,7 +132,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, CartScreen.routeName);
+                cartProvider.addToCart(product.id!, quantity);
               },
               child: const Text("Add To Cart"),
             ),

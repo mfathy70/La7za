@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:shop_app/core/models/Cart.dart';
 import '../../../constants.dart';
 
 class CheckoutCard extends StatelessWidget {
   const CheckoutCard({
     Key? key,
+    required this.cart,
   }) : super(key: key);
+
+  final Cart cart;
 
   @override
   Widget build(BuildContext context) {
@@ -60,14 +63,15 @@ class CheckoutCard extends StatelessWidget {
             const SizedBox(height: 16),
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: Text.rich(
                     TextSpan(
                       text: "Total:\n",
                       children: [
                         TextSpan(
-                          text: "\$337.15",
-                          style: TextStyle(fontSize: 16, color: Colors.black),
+                          text: "\$${cart.totalPrice}",
+                          style: const TextStyle(
+                              fontSize: 16, color: Colors.black),
                         ),
                       ],
                     ),

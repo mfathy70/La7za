@@ -11,9 +11,7 @@ class ProductsProvider {
   static const String subCatProductEndPoint =
       ApiConfig.baseApiUrl + subCatProduct;
   static const String wishlist = "wishlist";
-    static const String wishlistEndPoint = ApiConfig.baseApiUrl + wishlist;
-
-
+  static const String wishlistEndPoint = ApiConfig.baseApiUrl + wishlist;
 
   Future<List<Product>> getProducts() async {
     var url = Uri.parse(productsEndPoint);
@@ -50,11 +48,13 @@ class ProductsProvider {
     var url = Uri.parse(wishlistEndPoint);
     print(url);
     try {
-      var response =
-          await http.get(url, headers: {"Content-Type": "application/json", "token" : AuthProvider.userToken.toString()});
+      var response = await http.get(url, headers: {
+        "Content-Type": "application/json",
+        "token": AuthProvider.userToken.toString()
+      });
       var retrivedData = json.decode(response.body);
       print(retrivedData);
-      List data = retrivedData[wishlist];
+      List data = retrivedData['wishlist'];
       return data.map((e) => Product.fromJson(e)).toList();
     } catch (e) {
       print(e);

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../../../components/rounded_icon_btn.dart';
 import '../../../constants.dart';
 
@@ -8,30 +6,21 @@ class PriceContainer extends StatefulWidget {
   const PriceContainer({
     Key? key,
     required this.price,
+    required this.add,
+    required this.remove,
+    required this.quantity,
   }) : super(key: key);
 
   final double price;
+  final int quantity;
+  final VoidCallback add;
+  final VoidCallback remove;
 
   @override
   State<PriceContainer> createState() => _PriceContainerState();
 }
 
 class _PriceContainerState extends State<PriceContainer> {
-  int quantity = 1;
-
-  void _incrementQuantity() {
-    setState(() {
-      quantity++;
-      print(quantity);
-    });
-  }
-
-  void _decrementQuantity() {
-    setState(() {
-      quantity != 1 ? quantity-- : null;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -39,7 +28,7 @@ class _PriceContainerState extends State<PriceContainer> {
       child: Row(
         children: [
           Text(
-            "${widget.price * quantity} EGP",
+            "${widget.price * widget.quantity} EGP",
             style: const TextStyle(
                 color: kPrimaryColor,
                 fontSize: 22,
@@ -47,23 +36,28 @@ class _PriceContainerState extends State<PriceContainer> {
           ),
           const Spacer(),
           GestureDetector(
-            onTap: _decrementQuantity,
+            onTap: widget.remove,
             child: const RoundedIconBtn(
               icon: Icons.remove,
+              showShadow: true,
+              height: 40,
+              width: 40,
             ),
           ),
           const SizedBox(width: 20),
           Text(
-            quantity.toString(),
+            widget.quantity.toString(),
             style: const TextStyle(
                 color: kTextColor, fontSize: 22, fontWeight: FontWeight.w500),
           ),
           const SizedBox(width: 20),
           GestureDetector(
-            onTap: _incrementQuantity,
+            onTap: widget.add,
             child: const RoundedIconBtn(
               icon: Icons.add,
               showShadow: true,
+              height: 40,
+              width: 40,
             ),
           ),
         ],
