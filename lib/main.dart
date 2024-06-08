@@ -7,7 +7,7 @@ import 'package:shop_app/screens/splash/splash_screen.dart';
 import 'routes.dart';
 import 'theme.dart';
 
-void main() {
+void main() async {
   setupLocator();
   runApp(const MyApp());
 }

@@ -61,4 +61,47 @@ class ProductsProvider {
       throw e;
     }
   }
+
+  void addToWishlist(String product) async {
+    var url = Uri.parse(wishlistEndPoint);
+    print(url);
+    print(product);
+    try {
+      var response = await http.patch(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          "token": AuthProvider.userToken.toString()
+        },
+        body: jsonEncode(<String, String>{
+          'product': product,
+        }),
+      );
+      var retrivedData = json.decode(response.body);
+      print(retrivedData);
+    } catch (e) {
+      print(e);
+      throw e;
+    }
+  }
+
+  void deleteFromWishlist(String product) async {
+    var url = Uri.parse("$wishlistEndPoint/$product");
+    print(url);
+    print(product);
+    try {
+      var response = await http.delete(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          "token": AuthProvider.userToken.toString()
+        },
+      );
+      var retrivedData = json.decode(response.body);
+      print(retrivedData);
+    } catch (e) {
+      print(e);
+      throw e;
+    }
+  }
 }

@@ -5,21 +5,21 @@ import 'package:shop_app/core/provider/ai_model_provider.dart';
 import 'package:shop_app/core/provider/products_provider.dart';
 import '../../../constants.dart';
 
-class ProductDescription extends StatefulWidget {
-  const ProductDescription({
+class RecDescription extends StatefulWidget {
+  const RecDescription({
     Key? key,
     required this.product,
     this.pressOnSeeMore,
   }) : super(key: key);
 
-  final Product product;
+  final AiProduct product;
   final GestureTapCallback? pressOnSeeMore;
 
   @override
-  State<ProductDescription> createState() => _ProductDescriptionState();
+  State<RecDescription> createState() => _RecDescriptionState();
 }
 
-class _ProductDescriptionState extends State<ProductDescription> {
+class _RecDescriptionState extends State<RecDescription> {
   ProductsProvider productsProvider = ProductsProvider();
   AiModelProvider aiModelProvider = AiModelProvider();
   bool fav = false;

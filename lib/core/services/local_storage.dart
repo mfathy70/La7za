@@ -36,6 +36,7 @@ class LocalStorage {
         'Unable to load Profile data'.toUpperCase() + err.toString(),
       );
     }
+    return null;
   }
 
   static clearDataFromLocalStorage() async {
