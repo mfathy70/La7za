@@ -104,4 +104,20 @@ class ProductsProvider {
       throw e;
     }
   }
+
+  Future<List<Product>> searchProduct(String keyword) async {
+    var url = Uri.parse("$productsEndPoint?keyword=$keyword");
+    print(url);
+    try {
+      var response =
+          await http.get(url, headers: {"Content-Type": "application/json"});
+      var retrivedData = json.decode(response.body);
+      print(retrivedData);
+      List data = retrivedData['product'];
+      return data.map((e) => Product.fromJson(e)).toList();
+    } catch (e) {
+      print(e);
+      throw e;
+    }
+  }
 }

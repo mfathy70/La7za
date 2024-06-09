@@ -5,11 +5,11 @@ import 'package:shop_app/core/models/ai_product.dart';
 
 class AiModelProvider {
   static const String aiModelUrl = ApiConfig.aiModelUrl;
-  static List<AiProduct>? _recommendations;
-  static List<AiProduct>? get recommendations => _recommendations;
+  static final List<AiProduct> _recommendations = [];
+  static List<AiProduct> get recommendations => _recommendations;
 
   static setRecommendations(List<AiProduct>? val) {
-    _recommendations?.addAll(val!);
+    _recommendations.addAll(val!);
   }
 
   Future<List<AiProduct>> sendToAi(String product) async {
@@ -27,6 +27,7 @@ class AiModelProvider {
       List data = retrivedData;
       print(data);
       setRecommendations(data.map((e) => AiProduct.fromJson(e)).toList());
+      print(_recommendations);
       return data.map((e) => AiProduct.fromJson(e)).toList();
     } catch (e) {
       print(e);

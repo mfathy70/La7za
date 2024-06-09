@@ -25,24 +25,29 @@ class _ForYouScreenState extends State<ForYouScreen> {
       Expanded(
           child: Padding(
               padding: const EdgeInsets.all(16),
-              child: GridView.builder(
-                itemCount: recommendations!.length,
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  maxCrossAxisExtent: 200,
-                  childAspectRatio: 0.8,
-                  mainAxisSpacing: 20,
-                  crossAxisSpacing: 16,
-                ),
-                itemBuilder: (context, index) => RecommendationCard(
-                  product: recommendations![index],
-                  onPress: () => Navigator.pushNamed(
-                    context,
-                    RecDetailsScreen.routeName,
-                    arguments:
-                        RecDetailsArguments(product: recommendations![index]),
-                  ),
-                ),
-              )))
+              child: recommendations == null
+                  ? const Center(
+                      child: Text("No recommendations yet..!"),
+                    )
+                  : GridView.builder(
+                      itemCount: recommendations!.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 200,
+                        childAspectRatio: 0.8,
+                        mainAxisSpacing: 20,
+                        crossAxisSpacing: 16,
+                      ),
+                      itemBuilder: (context, index) => RecommendationCard(
+                        product: recommendations![index],
+                        onPress: () => Navigator.pushNamed(
+                          context,
+                          RecDetailsScreen.routeName,
+                          arguments: RecDetailsArguments(
+                              product: recommendations![index]),
+                        ),
+                      ),
+                    )))
     ]));
   }
 }

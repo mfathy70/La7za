@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/screens/search_screen.dart';
 
 import '../../../constants.dart';
 
@@ -11,7 +12,9 @@ class SearchField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       child: TextFormField(
-        onChanged: (value) {},
+        onTap: () {
+          Navigator.pushNamed(context, SearchScreen.routeName);
+        },
         decoration: InputDecoration(
           filled: true,
           fillColor: kSecondaryColor.withOpacity(0.1),
